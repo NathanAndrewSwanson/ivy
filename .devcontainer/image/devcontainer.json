@@ -2,13 +2,21 @@
 	"name": "Ivy Development Environment (image)",
 
 	"image": "unifyai/ivy:latest",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"ms-python.python"
 			],
 			"settings": {
-				"python.defaultInterpreterPath": "/opt/miniconda/envs/multienv/bin/python3"
+				"python.defaultInterpreterPath": "/opt/miniconda/envs/multienv/bin/python3",
+				"python.testing.unittestEnabled": false,
+				"python.testing.pytestEnabled": true,
+				"python.testing.pytestArgs": [
+					"./ivy_tests/test_ivy/",
+					"./ivy_tests/array_api_testing/test_array_api/",
+					"--continue-on-collection-errors",
+				 ],
 			}
 		}
 	},
@@ -17,6 +25,7 @@
         "post_create": "bash .devcontainer/post_create_commands.sh",
         "bashrc": "echo \"alias python=python3\" >> ~/.bashrc"
     },
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 	"initializeCommand": "docker pull unifyai/ivy:latest",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
