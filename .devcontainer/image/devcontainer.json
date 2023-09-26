@@ -15,8 +15,20 @@
 				"python.testing.pytestArgs": [
 					"./ivy_tests/test_ivy/",
 					"./ivy_tests/array_api_testing/test_array_api/",
-					"--continue-on-collection-errors",
-				 ],
+					"--continue-on-collection-errors"
+				],
+				"git.autofetch": "all",
+				"git.autoStash": true,
+				"git.fetchOnPull": true,
+				"git.terminalGitEditor": true,
+				"git.supportCancellation": true,
+				"git.repositoryScanIgnoredFolders": [
+					"node_modules"
+				], // List of folders that are ignored while scanning for Git repositories
+				"git.mergeEditor": true,
+				"git.pruneOnFetch": true,
+				"git.pullBeforeCheckout": true,
+				"githubPullRequests.overrideDefaultBranch": "main"
 			}
 		}
 	},
